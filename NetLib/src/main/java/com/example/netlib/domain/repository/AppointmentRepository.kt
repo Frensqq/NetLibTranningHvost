@@ -10,7 +10,7 @@ import com.example.netlib.domain.model.Slots
 
 interface AppointmentRepository {
 
-    suspend fun getSlots(): Slots
+    suspend fun getSlots():NetworkResult< Slots>
 
     suspend fun getAppointments(
         filter: String?,

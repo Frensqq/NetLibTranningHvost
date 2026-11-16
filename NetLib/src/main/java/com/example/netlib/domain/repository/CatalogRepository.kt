@@ -9,22 +9,22 @@ import com.example.netlib.domain.model.ServiceList
 interface CatalogRepository {
 
     suspend fun getService(
-        perPage: Int?,
-        page: Int?,
-        sort: String?
+        perPage: Int? = null,
+        page: Int? = null,
+        sort: String? = null,
     ): NetworkResult<ServiceList>
 
 
     suspend fun getClinics(
-        perPage: Int?,
-        page: Int?,
-        sort: String?
+        perPage: Int? = null,
+        page: Int? = null,
+        sort: String? = null,
     ): NetworkResult<ClinicList>
 
     suspend fun getDoctors(
-        perPage: Int?,
-        page: Int?,
+        perPage: Int? = null,
+        page: Int? = null,
         sort: String? = "-rating",
-        filter: String?
+        filter: String? = null
     ): NetworkResult<DoctorList>
 }

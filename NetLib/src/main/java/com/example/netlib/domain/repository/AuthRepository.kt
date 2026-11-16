@@ -20,5 +20,8 @@ interface AuthRepository {
 
     suspend fun authRefresh(): NetworkResult<AuthResponse>
 
-
+    fun saveToken(
+        token: String? = null
+    )
+    fun getToken() : String?
 }

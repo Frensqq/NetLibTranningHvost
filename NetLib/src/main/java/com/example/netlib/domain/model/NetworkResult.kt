@@ -5,7 +5,7 @@ sealed class NetworkResult<out T>(){
 
     data class Error(val errorResponse: ApiError): NetworkResult<Nothing>()
     data class ErrorSerialization(
-        val status: Int?,
+        val status: Int? = null,
         val message: String?
     ): NetworkResult<Nothing>()
 
