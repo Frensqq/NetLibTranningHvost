@@ -1,6 +1,23 @@
 package com.example.netlib.data.remote
 
+import com.example.netlib.data.remote.DTO.AppointmentDTO
+import com.example.netlib.data.remote.DTO.AppointmentListDTO
+import com.example.netlib.data.remote.DTO.AppointmentUpdateDTO
+import com.example.netlib.data.remote.DTO.AuthRequestDTO
+import com.example.netlib.data.remote.DTO.AuthResponseDTO
+import com.example.netlib.data.remote.DTO.CancelDTO
+import com.example.netlib.data.remote.DTO.ClinicListDTO
+import com.example.netlib.data.remote.DTO.DoctorListDTO
 import com.example.netlib.data.remote.DTO.FileUploadDTO
+import com.example.netlib.data.remote.DTO.PatchUserDTO
+import com.example.netlib.data.remote.DTO.PetDTO
+import com.example.netlib.data.remote.DTO.PetListDTO
+import com.example.netlib.data.remote.DTO.PetUpdateDTO
+import com.example.netlib.data.remote.DTO.RegistrationDTO
+import com.example.netlib.data.remote.DTO.ServiceListDTO
+import com.example.netlib.data.remote.DTO.SlotsDTO
+import com.example.netlib.data.remote.DTO.UserDTO
+import com.example.netlib.domain.model.AuthRequest
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.delete
@@ -17,12 +34,12 @@ import io.ktor.http.contentType
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.encodeToJsonElement
 import kotlinx.serialization.json.jsonObject
 
 internal class PBApi(
     private val client: HttpClient
-
 ){
 
     private val json = Json{
@@ -127,10 +144,151 @@ internal class PBApi(
     }.body()
 
 
-    
+    suspend fun register(
+        data: RegistrationDTO
+    ): UserDTO =
+        get("/api/collections/users/records")
+
+    suspend fun auth(
+        data: AuthRequestDTO
+    ): AuthResponseDTO =
+        post("/api/collections/users/auth-with-password", data)
+
+    suspend fun authRefresh(): AuthResponseDTO =
+        post("/api/collections/users/auth-refresh", buildJsonObject{})
+
+
+    //user
+    suspend fun getProfile(
+        userId: String
+    ): UserDTO =
+        get("/api/collections/users/records/{$userId}")
+
+    suspend fun patchProfile(
+        userId: String,
+        data: PatchUserDTO,
+        avatar: FileUploadDTO? = null
+    ): UserDTO =
+        patchMultipart(
+                    "/api/collections/users/records/{$userId}",
+            data,
+            files("avatar" to avatar)
+        )
+
+    //справочники
+    suspend fun getService(
+        perPage: Int?,
+        page: Int?,
+        sort: String?
+    ): ServiceListDTO =
+        get("/api/collections/services/records",
+            perPage,
+            page,
+            sort = sort)
+
+
+    suspend fun getClinics(
+        perPage: Int?,
+        page: Int?,
+        sort: String?
+    ): ClinicListDTO =
+        get("/api/collections/clinics/records",
+            perPage,
+            page,
+            sort = sort)
+
+    suspend fun getDoctors(
+        perPage: Int?,
+        page: Int?,
+        sort: String? = "-rating",
+        filter: String?
+    ): DoctorListDTO =
+        get("/api/collections/doctors/records",
+            perPage,
+            page,
+            sort = sort,
+            expand = "clinic",
+            filter = filter
+        )
 
 
 
+    //Питомцы
+
+    suspend fun getPet(
+        perPage: Int?,
+        page: Int?,
+        sort: String?
+    ): PetListDTO =
+        get("/api/collections/pets/records",
+            perPage,
+            page,
+            sort = sort
+        )
+
+    suspend fun postPet(
+        data: PetUpdateDTO,
+        photo: FileUploadDTO? = null
+    ): PetDTO =
+        postMultipart(
+            "/api/collections/pets/records",
+            data,
+            files("photo" to photo )
+        )
 
 
+    suspend fun patchPet(
+        id: String,
+        data: PetUpdateDTO,
+        photo: FileUploadDTO? = null
+    ): PetDTO =
+        patchMultipart(
+            "/api/collections/pets/records/$id",
+            data,
+            files("photo" to photo )
+        )
+
+
+    suspend fun deletePet(
+        id: String
+    ): Unit {
+        delete("/api/collections/pets/records/${id}")
+    }
+
+    suspend fun getSlots(
+
+    ): SlotsDTO = get(
+        "/api/hvost/slots"
+    )
+
+    suspend fun getAppointments(
+        filter: String?,
+        sort: String?,
+        page: Int? = 1,
+        perPage: Int? = 20
+    ): AppointmentListDTO = get(
+        "/api/collections/appointments/records",
+        expand = "pet,doctor,service,clinic",
+        filter = filter,
+        sort = sort,
+        page = page,
+        perPage = perPage
+    )
+
+    suspend fun postAppointments(
+        data: AppointmentUpdateDTO
+    ): AppointmentDTO =
+        post(
+            "/api/collections/appointments/records",
+            data
+        )
+
+
+
+    suspend fun canselAppointment(
+        id: String,
+        data: CancelDTO,
+    ): AppointmentDTO =
+        post("/api/hvost/appointments/${id}/cancel",
+            data)
 }
