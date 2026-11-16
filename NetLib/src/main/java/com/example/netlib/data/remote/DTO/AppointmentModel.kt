@@ -4,7 +4,7 @@ import android.text.BoringLayout
 import kotlinx.serialization.Serializable
 
 @kotlinx.serialization.Serializable
-data class SlotDTO(
+internal data class SlotDTO(
     val time: String,
 val start: String,
 val free: Boolean,
@@ -13,7 +13,7 @@ val free: Boolean,
 )
 
 @kotlinx.serialization.Serializable
-data class SlotsDTO(
+internal data class SlotsDTO(
     val doctor: String,
 val date: String,
 val weekday: Int,
@@ -23,14 +23,14 @@ val slots: List<SlotDTO>,
 )
 
 @kotlinx.serialization.Serializable
-data class AppointmentExpandDTO(
+internal data class AppointmentExpandDTO(
     val pet: PetDTO,
 val doctor: DoctorDTO,
 val service	: ServiceDTO,
 val clinic: ClinicDTO,
 )
 @kotlinx.serialization.Serializable
-data class AppointmentDTO(
+internal data class AppointmentDTO(
     val id: String,
 val number: Int,
 val user: String,
@@ -47,7 +47,7 @@ val updated: String,
     val expand: AppointmentExpandDTO
 )
 @kotlinx.serialization.Serializable
-data class AppointmentListDTO(
+internal data class AppointmentListDTO(
     val page: Int,
     val perPage: Int,
     val totalPages: Int,
@@ -55,7 +55,7 @@ data class AppointmentListDTO(
     val items: List<AppointmentDTO>
 )
 @kotlinx.serialization.Serializable
-data class AppointmentUpdateDTO(
+internal data class AppointmentUpdateDTO(
     val pet: String? = null,
 val doctor: String? = null,
 val service: String? = null,
@@ -64,6 +64,6 @@ val comment: String? = null,
 
 )
 @Serializable
-data class CancelDTO(
+internal data class CancelDTO(
     val reason: String
 )
