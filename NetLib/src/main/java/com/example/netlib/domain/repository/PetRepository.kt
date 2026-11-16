@@ -6,7 +6,9 @@ import com.example.netlib.domain.model.Pet
 import com.example.netlib.domain.model.PetList
 import com.example.netlib.domain.model.PetUpdate
 
-
+/**
+ * PetRepository - интерфейс запросы для питомцев
+ */
 interface PetRepository {
 
     suspend fun getPet(

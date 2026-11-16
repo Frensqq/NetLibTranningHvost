@@ -6,8 +6,11 @@ import com.example.netlib.domain.model.AuthResponse
 import com.example.netlib.domain.model.NetworkResult
 import com.example.netlib.domain.model.Registration
 import com.example.netlib.domain.model.User
-import kotlinx.serialization.json.buildJsonObject
 
+
+/**
+ * AuthRepository - интерфейс авторизации пользователя и сохранения токена
+ */
 interface AuthRepository {
 
     suspend fun register(

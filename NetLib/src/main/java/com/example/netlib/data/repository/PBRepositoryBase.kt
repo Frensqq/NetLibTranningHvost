@@ -13,6 +13,12 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import kotlin.coroutines.cancellation.CancellationException
 
+/**
+ * PBRepositoryBase - базовый репозиторий для обработки ошибок
+ *
+ * @param networkMonitor -
+ *
+ */
 abstract class PBRepositoryBase(
     protected val networkMonitor: Network
 ) {

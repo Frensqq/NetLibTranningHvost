@@ -5,6 +5,13 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import com.example.netlib.domain.network.Network
 
+
+/**
+ * NetworkImpl реализация интерфейса network - проверка на подключение к интернету
+ *
+ * @param context - контекст
+ *
+ */
 internal class NetworkImpl(private val context: Context): Network {
     override fun isConnected(): Boolean {
         val сonnectivityManager  = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

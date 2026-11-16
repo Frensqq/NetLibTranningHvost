@@ -26,6 +26,9 @@ import com.example.netlib.domain.repository.AppointmentRepository
 import com.example.netlib.domain.repository.CatalogRepository
 
 
+/**
+ * Перевод из SlotDTO в Slot
+ */
 internal fun SlotDTO.toDomain()
 = Slot(
     time = time,
@@ -33,6 +36,9 @@ internal fun SlotDTO.toDomain()
     free = free
 )
 
+/**
+ * Перевод из SlotsDTO в Slots
+ */
 internal fun SlotsDTO.toDomain()
 = Slots(
     doctor =    doctor,
@@ -42,7 +48,9 @@ internal fun SlotsDTO.toDomain()
     slots =   slots.map { it.toDomain() }
 )
 
-
+/**
+ * Перевод из AppointmentExpandDTO в AppointmentExpand
+ */
 internal fun AppointmentExpandDTO.toDomain()
 = AppointmentExpand(
     pet = pet.toDomain(),
@@ -51,7 +59,9 @@ internal fun AppointmentExpandDTO.toDomain()
     clinic = clinic.toDomain()
 )
 
-
+/**
+ * Перевод из AppointmentDTO в Appointment
+ */
 internal fun AppointmentDTO.toDomain()
  = Appointment(
     id = id,
@@ -70,7 +80,9 @@ internal fun AppointmentDTO.toDomain()
     expand =  expand.toDomain()
 )
 
-
+/**
+ * Перевод из AppointmentListDTO в AppointmentList
+ */
 internal fun AppointmentListDTO.toDomain()  =
     AppointmentList(
         page = page,
@@ -79,7 +91,9 @@ internal fun AppointmentListDTO.toDomain()  =
         totalItems = totalItems,
         items = items.map { it.toDomain() }
     )
-
+/**
+ * Перевод из AppointmentUpdate в AppointmentUpdateDTO
+ */
 internal fun AppointmentUpdate.toRequest() =
     AppointmentUpdateDTO(
         pet = pet,
@@ -89,6 +103,9 @@ internal fun AppointmentUpdate.toRequest() =
         comment = comment
     )
 
+/**
+ * Перевод из Cancel в CancelDTO
+ */
 internal fun Cancel.toRequest() =
     CancelDTO(
         reason = reason

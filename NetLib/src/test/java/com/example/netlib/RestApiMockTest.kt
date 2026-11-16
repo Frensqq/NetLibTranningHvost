@@ -66,7 +66,7 @@ class RestApiMockTest {
             {
                 "token": "test-token",
                 "record": {
-                    "id": "user-1",
+                    "id": "test-user",
                     "email": "test@mail.com",
                     "name": "Test",
                     "phone": "123456789",
@@ -106,7 +106,7 @@ class RestApiMockTest {
         val response = """
             {
                 "status": 400,
-                "message": "Failed to authenticate.",
+                "message": "Failed auth",
                 "data": {}
             }
         """.trimIndent()
@@ -121,14 +121,14 @@ class RestApiMockTest {
         val result = repository.auth(
             AuthRequest(
                 identity = "test@mail.com",
-                password = "wrong-password"
+                password = "testPass"
             )
         )
 
         val error = assertIs<NetworkResult.Error>(result).errorResponse
 
         assertEquals(400, error.status)
-        assertEquals("Failed to authenticate.", error.message)
+        assertEquals("Failed auth", error.message)
 
         client.close()
     }
@@ -179,11 +179,11 @@ class RestApiMockTest {
         val response = """
         {
             "status": 400,
-            "message": "Это время уже занято",
+            "message": "Время занято",
             "data": {
                 "start": {
-                    "code": "validation_not_unique",
-                    "message": "Это время уже занято"
+                    "code": "validation_error",
+                    "message": "Время занято"
                 }
             }
         }
@@ -197,9 +197,9 @@ class RestApiMockTest {
 
         val result = repository.postAppointments(
             AppointmentUpdate(
-                pet = "pet-1",
-                doctor = "doctor-1",
-                service = "service-1",
+                pet = "pet-test",
+                doctor = "doctor-test",
+                service = "service-test",
                 start = "2026-11-11T10:00:00Z",
                 comment = ""
             )
@@ -209,9 +209,9 @@ class RestApiMockTest {
 
         assertEquals(400, error.status)
         assertTrue(error.data.containsKey("start"))
-        assertEquals("validation_not_unique", error.data["start"]?.code)
+        assertEquals("validation_error", error.data["start"]?.code)
         assertEquals(
-            "Это время уже занято",
+            "Время занято",
             error.data["start"]?.message
         )
 
@@ -230,7 +230,7 @@ class RestApiMockTest {
             offlineNetwork
         )
 
-        val result = repository.getSlots("doctor-1", "2026-11-11")
+        val result = repository.getSlots("doctor-test", "2026-11-11")
 
         assertIs<NetworkResult.NoInternet>(result)
 

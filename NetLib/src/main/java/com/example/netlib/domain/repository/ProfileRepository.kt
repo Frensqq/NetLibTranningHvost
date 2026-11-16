@@ -5,6 +5,10 @@ import com.example.netlib.domain.model.NetworkResult
 import com.example.netlib.domain.model.PatchUser
 import com.example.netlib.domain.model.User
 
+
+/**
+ * ProfileRepository - интерфейс запросы для профиля
+ */
 interface ProfileRepository {
     suspend fun getProfile(
         userId: String

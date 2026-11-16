@@ -6,6 +6,9 @@ import com.example.netlib.domain.model.NetworkResult
 import com.example.netlib.domain.model.ServiceList
 
 
+/**
+ * CatalogRepository - интерфейс запросы для каталога (сервисы, клиники, врачи)
+ */
 interface CatalogRepository {
 
     suspend fun getService(

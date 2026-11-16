@@ -3,6 +3,12 @@ package com.example.netlib.data.token
 import android.content.Context
 import com.example.netlib.domain.storage.TokenStorage
 
+/**
+ * TokenStorageImpl - реализация интерфейса TokenStorage
+ *  хранение и управление токеном
+ *
+ *  @param context - контекст
+ */
 internal class TokenStorageImpl(
     private val context: Context
 ): TokenStorage {

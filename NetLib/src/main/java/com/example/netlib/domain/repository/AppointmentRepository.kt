@@ -8,6 +8,10 @@ import com.example.netlib.domain.model.Cancel
 import com.example.netlib.domain.model.NetworkResult
 import com.example.netlib.domain.model.Slots
 
+
+/**
+ * AuthRepository - интерфейс запросов для записи
+ */
 interface AppointmentRepository {
 
     suspend fun getSlots(doctorId: String, date: String): NetworkResult<Slots>

@@ -40,6 +40,13 @@ import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.encodeToJsonElement
 import kotlinx.serialization.json.jsonObject
 
+
+/**
+ * PBApi - класс запросов к серверу
+ *
+ * @param client - http клиент
+ *
+ */
 internal class PBApi(
     private val client: HttpClient
 ){

@@ -11,6 +11,14 @@ import com.example.netlib.domain.network.Network
 import com.example.netlib.domain.repository.CatalogRepository
 import com.example.netlib.domain.repository.ProfileRepository
 
+/**
+ *ProfileRepositoryImpl - реализация интерфейсов ProfileRepository и PBRepositoryBase(network)
+ * запросы для профиля
+ *
+ * @param api -
+ * @param network
+ *
+ */
 internal class ProfileRepositoryImpl(
     private val api: PBApi,
     network: Network

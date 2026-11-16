@@ -5,6 +5,9 @@ import com.example.netlib.data.remote.DTO.UserDTO
 import com.example.netlib.domain.model.PatchUser
 import com.example.netlib.domain.model.User
 
+/**
+ * Перевод из UserDTO в User
+ */
 internal fun UserDTO.toDomain() =
     User(
         id = id,
@@ -17,6 +20,10 @@ internal fun UserDTO.toDomain() =
         updated = updated
     )
 
+
+/**
+ * Перевод из PatchUser в PatchUserDTO
+ */
 internal fun PatchUser.toRequest(): PatchUserDTO =
     PatchUserDTO(
         name = name,

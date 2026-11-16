@@ -14,7 +14,9 @@ import com.example.netlib.domain.model.DoctorExpand
 import com.example.netlib.domain.model.DoctorList
 import com.example.netlib.domain.model.Service
 import com.example.netlib.domain.model.ServiceList
-
+/**
+ * Перевод из ServiceDTO в Service
+ */
 internal fun ServiceDTO.toDomain() =
     Service(
         id = id,
@@ -25,7 +27,9 @@ internal fun ServiceDTO.toDomain() =
         sort = sort
     )
 
-
+/**
+ * Перевод из ServiceListDTO в ServiceList
+ */
 internal fun ServiceListDTO.toDomain() =
     ServiceList(
         page = page,
@@ -34,7 +38,9 @@ internal fun ServiceListDTO.toDomain() =
         totalItems = totalItems,
         items = items.map { it.toDomain() }
     )
-
+/**
+ * Перевод из ClinicDTO в Clinic
+ */
 internal fun ClinicDTO.toDomain() =
     Clinic(
         id = id,
@@ -47,7 +53,9 @@ internal fun ClinicDTO.toDomain() =
         sort = sort
     )
 
-
+/**
+ * Перевод из ClinicListDTO в ClinicList
+ */
 internal fun ClinicListDTO.toDomain() =
     ClinicList(
         page =  page,
@@ -57,12 +65,17 @@ internal fun ClinicListDTO.toDomain() =
         items = items.map { it.toDomain() }
     )
 
+/**
+ * Перевод из DoctorExpandDTO в DoctorExpand
+ */
 internal fun DoctorExpandDTO.toDomain() =
     DoctorExpand(
         clinic = clinic?.toDomain()
     )
 
-
+/**
+ * Перевод из DoctorDTO в Doctor
+ */
 internal fun DoctorDTO.toDomain() =
     Doctor(
         id = id,
@@ -77,7 +90,9 @@ internal fun DoctorDTO.toDomain() =
         expand = expand.toDomain()
     )
 
-
+/**
+ * Перевод из DoctorListDTO в DoctorList
+ */
 internal fun DoctorListDTO.toDomain() =
     DoctorList(
         page = page,

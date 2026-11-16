@@ -5,12 +5,19 @@ import com.example.netlib.data.remote.DTO.ApiErrorFieldsDTO
 import com.example.netlib.domain.model.ApiError
 import com.example.netlib.domain.model.ApiErrorFields
 
+
+/**
+ * Перевод из ApiErrorFieldsDTO в ApiErrorFields
+ */
 internal fun ApiErrorFieldsDTO.toDomain() =
     ApiErrorFields(
         code = code,
         message = message
     )
 
+/**
+ * Перевод из ApiErrorDTO в ApiError
+ */
 internal fun ApiErrorDTO.toDomain() =
     ApiError(
         status = status,

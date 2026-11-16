@@ -21,6 +21,9 @@ import com.example.netlib.domain.model.PetUpdate
 import com.example.netlib.domain.model.Service
 import com.example.netlib.domain.model.ServiceList
 
+/**
+ * Перевод из PetDTO в Pet
+ */
 internal fun PetDTO.toDomain() =
     Pet(
         id = id,
@@ -35,7 +38,9 @@ internal fun PetDTO.toDomain() =
         updated = updated
     )
 
-
+/**
+ * Перевод из PetListDTO в PetList
+ */
 internal fun PetListDTO.toDomain() =
     PetList(
         page = page,
@@ -46,6 +51,9 @@ internal fun PetListDTO.toDomain() =
     )
 
 
+/**
+ * Перевод из PetUpdate в PetUpdateDTO
+ */
 internal fun PetUpdate.toRequest() =
     PetUpdateDTO(
         name = name,

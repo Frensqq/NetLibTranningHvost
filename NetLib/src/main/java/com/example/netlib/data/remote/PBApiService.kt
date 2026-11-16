@@ -12,6 +12,14 @@ import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
+
+/**
+ * PBApiService - настройка Http клиента для библиотеки
+ *
+ * @param defaultUrl - путь к серверу
+ * @param getToken - токен авторизации
+ *
+ */
 internal class PBApiService(
     private val defaultUrl: String,
     private val getToken: () -> String?

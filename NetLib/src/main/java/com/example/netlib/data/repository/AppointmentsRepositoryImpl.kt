@@ -16,7 +16,10 @@ import com.example.netlib.domain.network.Network
 import com.example.netlib.domain.repository.AppointmentRepository
 import com.example.netlib.domain.repository.CatalogRepository
 
-
+/**
+ * AppointmentsRepositoryImpl - реали
+ *
+ */
 internal class AppointmentsRepositoryImpl(
     private val api: PBApi,
     network: Network

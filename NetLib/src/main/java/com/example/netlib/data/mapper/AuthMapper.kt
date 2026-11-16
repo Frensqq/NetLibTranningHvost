@@ -21,6 +21,9 @@ import com.example.netlib.domain.model.Registration
 import com.example.netlib.domain.model.Service
 import com.example.netlib.domain.model.ServiceList
 
+/**
+ * Перевод из Registration в RegistrationDTO
+ */
 internal fun Registration.toRequest() =
     RegistrationDTO(
         email = email,
@@ -30,13 +33,18 @@ internal fun Registration.toRequest() =
         passwordConfirm = passwordConfirm
     )
 
-
+/**
+ * Перевод из AuthResponseDTO в AuthResponse
+ */
 internal fun AuthResponseDTO.toDomain() =
     AuthResponse(
         token = token,
         record = record.toDomain()
     )
 
+/**
+ * Перевод из AuthRequest в AuthRequestDTO
+ */
 internal fun AuthRequest.toRequest() =
     AuthRequestDTO(
         identity = identity,
