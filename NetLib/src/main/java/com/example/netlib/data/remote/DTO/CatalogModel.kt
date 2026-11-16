@@ -1,0 +1,65 @@
+package com.example.netlib.data.remote.DTO
+
+import kotlinx.serialization.Serializable
+
+@kotlinx.serialization.Serializable
+data class ServiceDTO(
+    val id: String,
+val code: String,
+val name: String,
+val price: Int,
+val durationMin: Int,
+val sort: Int,
+)
+@kotlinx.serialization.Serializable
+data class ServiceListDTO(
+    val page: Int,
+val perPage: Int,
+val totalPages: Int,
+val totalItems: Int,
+    val items: List< ServiceDTO>
+)
+@kotlinx.serialization.Serializable
+data class ClinicDTO(
+    val id: String,
+val name: String,
+val address: String,
+val phone: String,
+val lat: Double,
+val lng: Double,
+val hours: String,
+val sort: Int,
+)
+@kotlinx.serialization.Serializable
+data class ClinicListDTO(
+    val page: Int,
+    val perPage: Int,
+    val totalPages: Int,
+    val totalItems: Int,
+    val items: List< ClinicDTO>
+)
+@kotlinx.serialization.Serializable
+data class DoctorExpandDTO(
+    val clinic: ClinicDTO? = null,
+)
+@kotlinx.serialization.Serializable
+data class DoctorDTO(
+    val id: String,
+val name: String,
+val specialty: String,
+val experienceYears: Int,
+val rating: Double,
+val clinic: String,
+val services: List< String>,
+val workDays: List< Int>,
+val photo: String,
+val expand: DoctorExpandDTO,
+)
+@Serializable
+data class DoctorListDTO(
+    val page: Int,
+    val perPage: Int,
+    val totalPages: Int,
+    val totalItems: Int,
+    val items: List< DoctorDTO>
+)
