@@ -10,7 +10,7 @@ import com.example.netlib.domain.model.Slots
 
 
 /**
- * AuthRepository - интерфейс запросов для записи
+ * AppointmentRepository — определяет методы работы с записями
  */
 interface AppointmentRepository {
 

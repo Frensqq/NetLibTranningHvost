@@ -17,7 +17,10 @@ import com.example.netlib.domain.repository.AppointmentRepository
 import com.example.netlib.domain.repository.CatalogRepository
 
 /**
- * AppointmentsRepositoryImpl - реали
+ * AppointmentsRepositoryImpl - реализация интерфейсов PBRepositoryBase AppointmentRepository
+ *
+ * @param api — экземпляр API-клиента
+ * @param network - объект для проверки состояния интернет соединения
  *
  */
 internal class AppointmentsRepositoryImpl(

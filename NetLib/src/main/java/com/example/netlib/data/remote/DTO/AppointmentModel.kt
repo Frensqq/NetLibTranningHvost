@@ -3,6 +3,9 @@ package com.example.netlib.data.remote.DTO
 import android.text.BoringLayout
 import kotlinx.serialization.Serializable
 
+/**
+ * SlotDTO - слот из списка
+ */
 @kotlinx.serialization.Serializable
 internal data class SlotDTO(
     val time: String,
@@ -12,6 +15,10 @@ val free: Boolean,
 
 )
 
+
+/**
+ * SlotsDTO - список слотов
+ */
 @kotlinx.serialization.Serializable
 internal data class SlotsDTO(
     val doctor: String,
@@ -22,6 +29,10 @@ val slots: List<SlotDTO>,
 
 )
 
+
+/**
+ * AppointmentExpandDTO - расширение списка записей
+ */
 @kotlinx.serialization.Serializable
 internal data class AppointmentExpandDTO(
     val pet: PetDTO,
@@ -29,6 +40,10 @@ val doctor: DoctorDTO,
 val service	: ServiceDTO,
 val clinic: ClinicDTO,
 )
+
+/**
+ * AppointmentDTO - запись
+ */
 @kotlinx.serialization.Serializable
 internal data class AppointmentDTO(
     val id: String,
@@ -46,6 +61,10 @@ val created: String,
 val updated: String,
     val expand: AppointmentExpandDTO
 )
+
+/**
+ * AppointmentListDTO - список записей
+ */
 @kotlinx.serialization.Serializable
 internal data class AppointmentListDTO(
     val page: Int,
@@ -54,6 +73,10 @@ internal data class AppointmentListDTO(
     val totalItems: Int,
     val items: List<AppointmentDTO>
 )
+
+/**
+ * AppointmentUpdateDTO - обновление записей
+ */
 @kotlinx.serialization.Serializable
 internal data class AppointmentUpdateDTO(
     val pet: String? = null,
@@ -63,6 +86,12 @@ val start: String? = null,
 val comment: String? = null,
 
 )
+
+/**
+ *
+ * CancelDTO - данные для запроса Cancel
+ *
+ */
 @Serializable
 internal data class CancelDTO(
     val reason: String

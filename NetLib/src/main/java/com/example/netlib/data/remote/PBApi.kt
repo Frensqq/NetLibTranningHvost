@@ -42,7 +42,7 @@ import kotlinx.serialization.json.jsonObject
 
 
 /**
- * PBApi - класс запросов к серверу
+ * PBApi - класс Rest запросов к серверу
  *
  * @param client - http клиент
  *

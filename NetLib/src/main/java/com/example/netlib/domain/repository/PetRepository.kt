@@ -7,7 +7,7 @@ import com.example.netlib.domain.model.PetList
 import com.example.netlib.domain.model.PetUpdate
 
 /**
- * PetRepository - интерфейс запросы для питомцев
+ * PetRepository — определяет методы работы с питомцами
  */
 interface PetRepository {
 

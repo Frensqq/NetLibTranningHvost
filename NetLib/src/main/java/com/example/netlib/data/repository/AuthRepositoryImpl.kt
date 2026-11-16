@@ -16,7 +16,14 @@ import com.example.netlib.domain.repository.AuthRepository
 import com.example.netlib.domain.repository.CatalogRepository
 import com.example.netlib.domain.storage.TokenStorage
 
-
+/**
+ * AuthRepositoryImpl - реализация интерфейсов PBRepositoryBase AuthRepository
+ *
+ * @param api — экземпляр API-клиента
+ * @param tokenStorage - хранилище токена
+ * @param network - объект для проверки состояния интернет соединения
+ *
+ */
 internal class AuthRepositoryImpl(
     private val api: PBApi,
     private val tokenStorage: TokenStorage,

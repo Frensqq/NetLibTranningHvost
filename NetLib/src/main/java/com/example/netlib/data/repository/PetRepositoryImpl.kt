@@ -11,7 +11,13 @@ import com.example.netlib.domain.model.PetUpdate
 import com.example.netlib.domain.network.Network
 import com.example.netlib.domain.repository.PetRepository
 
-
+/**
+ * PetRepositoryImpl - реализация интерфейсов PBRepositoryBase PetRepository
+ *
+ * @param api — экземпляр API-клиента
+ * @param network - объект для проверки состояния интернет соединения
+ *
+ */
 internal class PetRepositoryImpl(
     private val api: PBApi,
     network: Network

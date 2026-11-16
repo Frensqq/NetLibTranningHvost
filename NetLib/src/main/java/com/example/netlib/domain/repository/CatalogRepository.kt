@@ -7,7 +7,7 @@ import com.example.netlib.domain.model.ServiceList
 
 
 /**
- * CatalogRepository - интерфейс запросы для каталога (сервисы, клиники, врачи)
+ * CatalogRepository — определяет методы получения услуг, клиник и врачей
  */
 interface CatalogRepository {
 

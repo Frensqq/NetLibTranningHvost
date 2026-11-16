@@ -7,7 +7,7 @@ import com.example.netlib.domain.storage.TokenStorage
  * TokenStorageImpl - реализация интерфейса TokenStorage
  *  хранение и управление токеном
  *
- *  @param context - контекст
+ *  @param context - контекст android
  */
 internal class TokenStorageImpl(
     private val context: Context

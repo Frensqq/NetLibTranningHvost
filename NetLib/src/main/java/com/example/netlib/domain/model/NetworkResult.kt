@@ -1,5 +1,8 @@
 package com.example.netlib.domain.model
 
+/**
+ * NetworkResult — результат выполнения сетевого запроса
+ */
 sealed class NetworkResult<out T>(){
     data class Success<T>(val data: T): NetworkResult<T>()
 

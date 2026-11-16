@@ -1,5 +1,8 @@
 package com.example.netlib.domain.model
 
+/**
+ * Service - данные сервис
+ */
 data class Service(
     val id: String,
 val code: String,
@@ -9,6 +12,9 @@ val durationMin: Int,
 val sort: Int,
 )
 
+/**
+ * ServiceList - данные список сервисов
+ */
 data class ServiceList(
     val page: Int,
 val perPage: Int,
@@ -17,6 +23,9 @@ val totalItems: Int,
     val items: List< Service>
 )
 
+/**
+ * Clinic - данные клиники
+ */
 data class Clinic(
     val id: String,
 val name: String,
@@ -28,6 +37,9 @@ val hours: String,
 val sort: Int,
 )
 
+/**
+ * ClinicList - данные список клиник
+ */
 data class ClinicList(
     val page: Int,
     val perPage: Int,
@@ -36,10 +48,16 @@ data class ClinicList(
     val items: List< Clinic>
 )
 
+/**
+ * DoctorExpand - данные расширения
+ */
 data class DoctorExpand(
     val clinic: Clinic? = null,
 )
 
+/**
+ * Doctor - данные доктор
+ */
 data class Doctor(
     val id: String,
 val name: String,
@@ -53,6 +71,9 @@ val photo: String,
 val expand: DoctorExpand,
 )
 
+/**
+ * DoctorList - данные список докторов
+ */
 data class DoctorList(
     val page: Int,
     val perPage: Int,

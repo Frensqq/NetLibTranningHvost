@@ -12,11 +12,10 @@ import com.example.netlib.domain.repository.CatalogRepository
 import com.example.netlib.domain.repository.ProfileRepository
 
 /**
- *ProfileRepositoryImpl - реализация интерфейсов ProfileRepository и PBRepositoryBase(network)
- * запросы для профиля
+ * ProfileRepositoryImpl - реализация интерфейсов PBRepositoryBase ProfileRepository
  *
- * @param api -
- * @param network
+ * @param api — экземпляр API-клиента
+ * @param network - объект для проверки состояния интернет соединения
  *
  */
 internal class ProfileRepositoryImpl(

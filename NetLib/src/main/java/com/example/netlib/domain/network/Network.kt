@@ -2,7 +2,8 @@ package com.example.netlib.domain.network
 
 
 /**
- * Network - интерфейс для проверки интернета
+ * Network - определяет методы проверки интернет соединения
+ *
  */
 interface Network {
     fun isConnected(): Boolean

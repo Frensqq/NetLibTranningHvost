@@ -9,7 +9,7 @@ import com.example.netlib.domain.network.Network
 /**
  * NetworkImpl реализация интерфейса network - проверка на подключение к интернету
  *
- * @param context - контекст
+ * @param context - контекст Android
  *
  */
 internal class NetworkImpl(private val context: Context): Network {

@@ -9,7 +9,7 @@ import com.example.netlib.domain.model.User
 
 
 /**
- * AuthRepository - интерфейс авторизации пользователя и сохранения токена
+ * AuthRepository — определяет методы авторизации, регистрации и обновления токена
  */
 interface AuthRepository {
 

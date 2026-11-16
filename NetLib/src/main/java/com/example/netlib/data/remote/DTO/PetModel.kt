@@ -2,6 +2,9 @@ package com.example.netlib.data.remote.DTO
 
 import kotlinx.serialization.Serializable
 
+/**
+ * PetDTO - данные питомца
+ */
 @kotlinx.serialization.Serializable
 internal data class PetDTO(
     val id: String,
@@ -15,6 +18,9 @@ val photo: String,
 val created: String,
 val updated: String,
 )
+/**
+ * PetListDTO - данные список питомцев
+ */
 @kotlinx.serialization.Serializable
 internal data class PetListDTO(
     val page: Int,
@@ -23,6 +29,9 @@ internal data class PetListDTO(
     val totalItems: Int,
     val items: List< PetDTO>
 )
+/**
+ * PetUpdateDTO - данные обновления питомца
+ */
 @Serializable
 internal data class PetUpdateDTO(
     val name: String? = null,

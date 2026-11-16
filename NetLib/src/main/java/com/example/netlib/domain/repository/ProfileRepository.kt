@@ -7,7 +7,7 @@ import com.example.netlib.domain.model.User
 
 
 /**
- * ProfileRepository - интерфейс запросы для профиля
+ * ProfileRepository — определяет методы получения и изменения профиля
  */
 interface ProfileRepository {
     suspend fun getProfile(

@@ -1,5 +1,8 @@
 package com.example.netlib.domain.model
 
+/**
+ * Pet - данные питомца
+ */
 data class Pet(
     val id: String,
 val owner: String,
@@ -13,6 +16,9 @@ val created: String,
 val updated: String,
 )
 
+/**
+ * PetList - данные список питомцев
+ */
 data class PetList(
     val page: Int,
     val perPage: Int,
@@ -21,6 +27,9 @@ data class PetList(
     val items: List< Pet>
 )
 
+/**
+ * PetUpdate - данные обновления питомца
+ */
 data class PetUpdate(
     val name: String? = null,
     val species: String? = null,

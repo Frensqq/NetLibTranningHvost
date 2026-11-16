@@ -1,7 +1,8 @@
 package com.example.netlib.domain.storage
 
 /**
- * Интерфейс хранение токена
+ * TokenStorage — определяет методы сохранения и получения токена.
+ *
  */
 interface TokenStorage {
 

@@ -9,7 +9,13 @@ import com.example.netlib.domain.model.ServiceList
 import com.example.netlib.domain.network.Network
 import com.example.netlib.domain.repository.CatalogRepository
 
-
+/**
+ * CatalogRepositoryImpl - реализация интерфейсов PBRepositoryBase CatalogRepository
+ *
+ * @param api — экземпляр API-клиента
+ * @param network - объект для проверки состояния интернет соединения
+ *
+ */
 internal class CatalogRepositoryImpl(
     private val api: PBApi,
     network: Network

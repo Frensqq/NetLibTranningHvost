@@ -2,6 +2,9 @@ package com.example.netlib.data.remote.DTO
 
 import kotlinx.serialization.Serializable
 
+/**
+ * ServiceDTO - данные сервис
+ */
 @kotlinx.serialization.Serializable
 internal data class ServiceDTO(
     val id: String,
@@ -11,6 +14,9 @@ val price: Int,
 val durationMin: Int,
 val sort: Int,
 )
+/**
+ * ServiceListDTO - данные список сервисов
+ */
 @kotlinx.serialization.Serializable
 internal data class ServiceListDTO(
     val page: Int,
@@ -19,6 +25,9 @@ val totalPages: Int,
 val totalItems: Int,
     val items: List< ServiceDTO>
 )
+/**
+ * ClinicDTO - данные клиники
+ */
 @kotlinx.serialization.Serializable
 internal data class ClinicDTO(
     val id: String,
@@ -30,6 +39,9 @@ val lng: Double,
 val hours: String,
 val sort: Int,
 )
+/**
+ * ClinicListDTO - данные список клиник
+ */
 @kotlinx.serialization.Serializable
 internal data class ClinicListDTO(
     val page: Int,
@@ -38,10 +50,18 @@ internal data class ClinicListDTO(
     val totalItems: Int,
     val items: List< ClinicDTO>
 )
+
+/**
+ * DoctorExpandDTO - данные расширения
+ */
 @kotlinx.serialization.Serializable
 internal data class DoctorExpandDTO(
     val clinic: ClinicDTO? = null,
 )
+
+/**
+ * DoctorDTO - данные доктор
+ */
 @kotlinx.serialization.Serializable
 internal data class DoctorDTO(
     val id: String,
@@ -55,6 +75,9 @@ val workDays: List< Int>,
 val photo: String,
 val expand: DoctorExpandDTO,
 )
+/**
+ * DoctorListDTO - данные список докторов
+ */
 @Serializable
 internal data class DoctorListDTO(
     val page: Int,

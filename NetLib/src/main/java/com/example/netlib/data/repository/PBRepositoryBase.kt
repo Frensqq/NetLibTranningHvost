@@ -14,9 +14,9 @@ import kotlinx.serialization.json.Json
 import kotlin.coroutines.cancellation.CancellationException
 
 /**
- * PBRepositoryBase - базовый репозиторий для обработки ошибок
+ * PBRepositoryBase - базовый класс обнаруживает ошибки запросов
  *
- * @param networkMonitor -
+ * @param networkMonitor — проверка интернет подключения
  *
  */
 abstract class PBRepositoryBase(
