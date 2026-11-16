@@ -18,12 +18,14 @@ import com.example.netlib.data.remote.DTO.ServiceListDTO
 import com.example.netlib.data.remote.DTO.SlotsDTO
 import com.example.netlib.data.remote.DTO.UserDTO
 import com.example.netlib.domain.model.AuthRequest
+import com.example.netlib.domain.model.Slots
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.delete
 import io.ktor.client.request.forms.MultiPartFormDataContent
 import io.ktor.client.request.forms.formData
 import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 import io.ktor.client.request.patch
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
@@ -255,11 +257,11 @@ internal class PBApi(
         delete("/api/collections/pets/records/${id}")
     }
 
-    suspend fun getSlots(
-
-    ): SlotsDTO = get(
-        "/api/hvost/slots"
-    )
+    suspend fun getSlots(doctorId: String, date: String): SlotsDTO =
+        client.get("hvost/slots") {
+            parameter("doctor", doctorId)
+            parameter("date", date)
+        }.body()
 
     suspend fun getAppointments(
         filter: String?,

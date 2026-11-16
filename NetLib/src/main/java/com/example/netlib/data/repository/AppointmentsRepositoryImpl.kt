@@ -21,9 +21,9 @@ internal class AppointmentsRepositoryImpl(
     private val api: PBApi,
     network: Network
 ): PBRepositoryBase(network), AppointmentRepository {
-    override suspend fun getSlots(): NetworkResult<Slots> {
+    override suspend fun getSlots(doctorId: String, date: String): NetworkResult<Slots> {
         return safeApiCall {
-            api.getSlots().toDomain()
+            api.getSlots(doctorId, date).toDomain()
         }
     }
 
