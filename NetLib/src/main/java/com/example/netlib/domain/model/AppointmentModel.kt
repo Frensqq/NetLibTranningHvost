@@ -29,10 +29,10 @@ val slots: List<Slot>,
  * AppointmentExpand - расширение списка записей
  */
 data class AppointmentExpand(
-    val pet: Pet,
-val doctor: Doctor,
-val service	: Service,
-val clinic: Clinic,
+    val pet: Pet? = null,
+val doctor: Doctor? = null ,
+val service	: Service? = null,
+val clinic: Clinic? = null,
 )
 
 /**
@@ -52,7 +52,7 @@ val comment: String,
 val cancelReason: String,
 val created: String,
 val updated: String,
-    val expand: AppointmentExpand
+    val expand: AppointmentExpand? = null
 )
 
 /**

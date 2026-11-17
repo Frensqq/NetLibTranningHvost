@@ -87,7 +87,7 @@ internal fun DoctorDTO.toDomain() =
         services = services,
         workDays = workDays,
         photo = photo,
-        expand = expand.toDomain()
+        expand = expand?.toDomain()
     )
 
 /**

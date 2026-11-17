@@ -73,7 +73,7 @@ val clinic: String,
 val services: List< String>,
 val workDays: List< Int>,
 val photo: String,
-val expand: DoctorExpandDTO,
+val expand: DoctorExpandDTO? = null,
 )
 /**
  * DoctorListDTO - данные список докторов

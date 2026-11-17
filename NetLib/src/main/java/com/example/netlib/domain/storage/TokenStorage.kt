@@ -9,4 +9,5 @@ interface TokenStorage {
     fun getToken(): String?
 
     fun saveToken(token: String?)
+
 }

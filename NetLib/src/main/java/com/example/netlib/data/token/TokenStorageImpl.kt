@@ -20,9 +20,13 @@ internal class TokenStorageImpl(
     }
 
     override fun saveToken(token: String?) {
-        preferences.edit()?.apply {
-            if (token == null) remove("token_auth")
-            else putString("token_auth", token)
+        preferences.edit().apply {
+            if (token == null) {
+                remove("auth_token")
+            } else {
+                putString("auth_token", token)
+            }
+            apply()
         }
 
     }

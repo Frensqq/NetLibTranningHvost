@@ -35,10 +35,10 @@ val slots: List<SlotDTO>,
  */
 @kotlinx.serialization.Serializable
 internal data class AppointmentExpandDTO(
-    val pet: PetDTO,
-val doctor: DoctorDTO,
-val service	: ServiceDTO,
-val clinic: ClinicDTO,
+    val pet: PetDTO? = null,
+val doctor: DoctorDTO? = null,
+val service	: ServiceDTO? = null,
+val clinic: ClinicDTO? = null ,
 )
 
 /**
@@ -59,7 +59,7 @@ val comment: String,
 val cancelReason: String,
 val created: String,
 val updated: String,
-    val expand: AppointmentExpandDTO
+    val expand: AppointmentExpandDTO? = null
 )
 
 /**

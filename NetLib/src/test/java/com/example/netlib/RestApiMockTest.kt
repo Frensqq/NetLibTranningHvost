@@ -52,7 +52,7 @@ class RestApiMockTest {
         }
 
         defaultRequest {
-            url("http://localhost:8090/")
+            url("http://10.0.2.2:8090/api/")
         }
     }
 

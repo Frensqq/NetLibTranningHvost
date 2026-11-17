@@ -53,10 +53,10 @@ internal fun SlotsDTO.toDomain()
  */
 internal fun AppointmentExpandDTO.toDomain()
 = AppointmentExpand(
-    pet = pet.toDomain(),
-    doctor = doctor.toDomain() ,
-    service = service.toDomain(),
-    clinic = clinic.toDomain()
+    pet = pet?.toDomain(),
+    doctor = doctor?.toDomain() ,
+    service = service?.toDomain(),
+    clinic = clinic?.toDomain()
 )
 
 /**
@@ -77,7 +77,7 @@ internal fun AppointmentDTO.toDomain()
     cancelReason = cancelReason,
     created = created,
     updated = updated,
-    expand =  expand.toDomain()
+    expand =  expand?.toDomain()
 )
 
 /**

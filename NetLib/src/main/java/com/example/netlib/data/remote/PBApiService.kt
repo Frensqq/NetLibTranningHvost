@@ -56,11 +56,9 @@ internal class PBApiService(
 
             defaultRequest {
                 defaultUrl
-
-                    getToken()?.let {
-                        header(HttpHeaders.Authorization, it)
-                    }
-
+                getToken()?.let {
+                    header(HttpHeaders.Authorization, it)
+                }
             }
         }
     }
