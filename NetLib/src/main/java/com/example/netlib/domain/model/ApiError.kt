@@ -1,6 +1,5 @@
 package com.example.netlib.domain.model
 
-import android.os.Message
 
 /**
  * ApiError - данные ошибки

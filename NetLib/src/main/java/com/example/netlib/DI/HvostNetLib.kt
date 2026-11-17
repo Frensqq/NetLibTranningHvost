@@ -2,7 +2,6 @@ package com.example.netlib.DI
 
 import android.content.Context
 import com.example.netlib.data.network.NetworkImpl
-import com.example.netlib.data.remote.DTO.PetListDTO
 import com.example.netlib.data.remote.PBApi
 import com.example.netlib.data.remote.PBApiService
 import com.example.netlib.data.repository.AppointmentsRepositoryImpl
@@ -17,9 +16,6 @@ import com.example.netlib.domain.repository.CatalogRepository
 import com.example.netlib.domain.repository.PetRepository
 import com.example.netlib.domain.repository.ProfileRepository
 import com.example.netlib.domain.storage.TokenStorage
-import io.ktor.client.HttpClient
-import io.ktor.http.Url
-
 class HvostNetLib(
     context: Context,
     baseUrl: String,

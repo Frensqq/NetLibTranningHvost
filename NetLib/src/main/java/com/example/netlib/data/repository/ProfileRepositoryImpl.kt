@@ -8,7 +8,6 @@ import com.example.netlib.domain.model.NetworkResult
 import com.example.netlib.domain.model.PatchUser
 import com.example.netlib.domain.model.User
 import com.example.netlib.domain.network.Network
-import com.example.netlib.domain.repository.CatalogRepository
 import com.example.netlib.domain.repository.ProfileRepository
 
 /**

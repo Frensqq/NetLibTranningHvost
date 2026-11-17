@@ -7,14 +7,10 @@ import com.example.netlib.domain.model.Appointment
 import com.example.netlib.domain.model.AppointmentList
 import com.example.netlib.domain.model.AppointmentUpdate
 import com.example.netlib.domain.model.Cancel
-import com.example.netlib.domain.model.ClinicList
-import com.example.netlib.domain.model.DoctorList
 import com.example.netlib.domain.model.NetworkResult
-import com.example.netlib.domain.model.ServiceList
 import com.example.netlib.domain.model.Slots
 import com.example.netlib.domain.network.Network
 import com.example.netlib.domain.repository.AppointmentRepository
-import com.example.netlib.domain.repository.CatalogRepository
 
 /**
  * AppointmentsRepositoryImpl - реализация интерфейсов PBRepositoryBase AppointmentRepository

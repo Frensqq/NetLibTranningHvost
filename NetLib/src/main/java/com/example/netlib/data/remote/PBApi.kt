@@ -17,8 +17,6 @@ import com.example.netlib.data.remote.DTO.RegistrationDTO
 import com.example.netlib.data.remote.DTO.ServiceListDTO
 import com.example.netlib.data.remote.DTO.SlotsDTO
 import com.example.netlib.data.remote.DTO.UserDTO
-import com.example.netlib.domain.model.AuthRequest
-import com.example.netlib.domain.model.Slots
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.delete
@@ -33,7 +31,6 @@ import io.ktor.http.ContentType
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 import io.ktor.http.contentType
-import io.ktor.http.parameters
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonPrimitive
@@ -57,7 +54,7 @@ internal class PBApi(
         explicitNulls = false
 
     }
-    
+
     private inline suspend fun <reified D> get(
         path: String,
         perPage: Int? = null,

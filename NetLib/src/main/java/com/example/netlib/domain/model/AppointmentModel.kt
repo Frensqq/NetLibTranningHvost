@@ -1,6 +1,5 @@
 package com.example.netlib.domain.model
 
-import android.text.BoringLayout
 
 /**
  * Slot - слот из списка

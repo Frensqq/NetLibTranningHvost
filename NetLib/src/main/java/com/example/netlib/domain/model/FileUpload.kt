@@ -1,6 +1,5 @@
 package com.example.netlib.domain.model
 
-import androidx.activity.result.contract.ActivityResultContracts
 
 /**
  * FileUploadDTO - данные файла

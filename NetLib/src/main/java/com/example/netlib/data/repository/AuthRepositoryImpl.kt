@@ -5,15 +5,11 @@ import com.example.netlib.data.mapper.toRequest
 import com.example.netlib.data.remote.PBApi
 import com.example.netlib.domain.model.AuthRequest
 import com.example.netlib.domain.model.AuthResponse
-import com.example.netlib.domain.model.ClinicList
-import com.example.netlib.domain.model.DoctorList
 import com.example.netlib.domain.model.NetworkResult
 import com.example.netlib.domain.model.Registration
-import com.example.netlib.domain.model.ServiceList
 import com.example.netlib.domain.model.User
 import com.example.netlib.domain.network.Network
 import com.example.netlib.domain.repository.AuthRepository
-import com.example.netlib.domain.repository.CatalogRepository
 import com.example.netlib.domain.storage.TokenStorage
 
 /**
