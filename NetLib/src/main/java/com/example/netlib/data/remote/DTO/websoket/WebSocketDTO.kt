@@ -19,7 +19,7 @@ data class ErrorEventDTO(
     val message: String?
 )
 @Serializable
-data class PongEvent(
+data class PongEventDTO (
     val time: String
 )
 @Serializable

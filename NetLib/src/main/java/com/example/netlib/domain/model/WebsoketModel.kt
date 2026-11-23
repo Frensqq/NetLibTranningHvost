@@ -4,18 +4,18 @@ import kotlinx.serialization.Serializable
 
 sealed interface WebSocketEvent
 
-data class WebSocketUserDTO(
+data class WebSocketUser(
     val id: String,
     val email: String,
     val name: String,
 ): WebSocketEvent
 
-data class HelloEventDTO(
-    val user: WebSocketUserDTO,
+data class HelloEvent(
+    val user: WebSocketUser,
     val serverTime: String
 ): WebSocketEvent
 
-data class ErrorEventDTO(
+data class ErrorEvent(
     val code: String,
     val message: String?
 ): WebSocketEvent
@@ -24,20 +24,20 @@ data class PongEvent(
     val time: String
 ): WebSocketEvent
 
-data class SubscribeEventDTO(
+data class SubscribeEvent(
     val topic: String,
     val doctor: String,
     val date: String,
 ): WebSocketEvent
 
-data class SlotTakenEventDTO(
+data class SlotTakenEvent(
     val doctor: String,
     val date: String,
     val time: String,
     val start: String
 ): WebSocketEvent
 
-data class SlotFreesEventDTO(
+data class SlotFreesEvent(
     val doctor: String,
     val date: String,
     val time: String,
@@ -45,7 +45,7 @@ data class SlotFreesEventDTO(
 ): WebSocketEvent
 
 
-data class StatusEventDTO(
+data class StatusEvent(
     val appointmentId: String,
     val number: Int,
     val status: String,
@@ -57,7 +57,7 @@ data class StatusEventDTO(
 ): WebSocketEvent
 
 
-data class DelayEventDTO(
+data class DelayEvent(
     val appointmentId: String,
     val number: Int,
     val minutes: Int,
@@ -66,7 +66,7 @@ data class DelayEventDTO(
 ): WebSocketEvent
 
 
-data class QueueEventDTO(
+data class QueueEvent(
     val appointmentId: String,
     val number: Int,
     val state: String,
@@ -79,7 +79,7 @@ data class QueueEventDTO(
 ): WebSocketEvent
 
 
-data class QueueDemoStartedDTO(
+data class QueueDemoStarted(
     val appointmentId: String,
     val stepSec: Int
 ): WebSocketEvent
