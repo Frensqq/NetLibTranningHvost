@@ -10,6 +10,8 @@ import com.example.netlib.data.remote.DTO.websoket.SlotFreesEventDTO
 import com.example.netlib.data.remote.DTO.websoket.SlotTakenEventDTO
 import com.example.netlib.data.remote.DTO.websoket.StatusEventDTO
 import com.example.netlib.data.remote.DTO.websoket.SubscribeEventDTO
+import com.example.netlib.data.remote.DTO.websoket.UnsubscribeEventDTO
+import com.example.netlib.data.remote.DTO.websoket.UnsubscribeEventOut
 import com.example.netlib.data.remote.DTO.websoket.WebSocketUserDTO
 import com.example.netlib.domain.model.DelayEvent
 import com.example.netlib.domain.model.ErrorEvent
@@ -21,6 +23,7 @@ import com.example.netlib.domain.model.SlotFreesEvent
 import com.example.netlib.domain.model.SlotTakenEvent
 import com.example.netlib.domain.model.StatusEvent
 import com.example.netlib.domain.model.SubscribeEvent
+import com.example.netlib.domain.model.UnsubscribeEvent
 import com.example.netlib.domain.model.WebSocketUser
 
 
@@ -96,6 +99,12 @@ fun QueueEventDTO.toDomain() = QueueEvent(
     room = room,
     delayMin = delayMin,
     message = message,
+)
+
+fun UnsubscribeEventDTO.toDomain() = UnsubscribeEvent(
+    topic = topic,
+    doctor = doctor,
+    date = date
 )
 
 

@@ -29,6 +29,12 @@ data class SubscribeEventDTO(
     val date: String,
 )
 @Serializable
+data class UnsubscribeEventDTO(
+    val topic: String,
+    val doctor: String? = null,
+    val date: String? = null,
+)
+@Serializable
 data class SlotTakenEventDTO(
     val doctor: String,
     val date: String,

@@ -29,6 +29,11 @@ data class SubscribeEvent(
     val doctor: String,
     val date: String,
 ): WebSocketEvent
+data class UnsubscribeEvent(
+    val topic: String,
+    val doctor: String? =null,
+    val date: String? = null,
+): WebSocketEvent
 
 data class SlotTakenEvent(
     val doctor: String,
