@@ -1,0 +1,20 @@
+package com.example.netlib.domain.websocket
+
+import kotlinx.coroutines.flow.Flow
+
+interface WSClient {
+
+    val events: Flow<WebSocketEvent>
+    val isConnected: Boolean
+
+    suspend fun connect()
+    suspend fun disconnect()
+    suspend fun ping()
+
+    suspend fun subscribeSlots(doctor: String, date: String)
+    suspend fun unsubscribeSlots(doctor: String? = null, date: String? = null)
+
+    suspend fun requestQueueDemo(appointmentId: String)
+
+
+}
