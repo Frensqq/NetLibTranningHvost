@@ -7,10 +7,10 @@ interface WSConnection {
 
     suspend fun connection(token: String)
 
-    suspend fun disconтected()
+    suspend fun disconnected()
 
     suspend fun send(message: String)
 
-    suspend fun listener(onMessage: suspend (String) -> Unit): Int?
+    suspend fun listen(onMessage: suspend (String) -> Unit): Int?
 
 }
