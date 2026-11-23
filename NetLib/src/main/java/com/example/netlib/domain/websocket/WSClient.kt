@@ -1,5 +1,6 @@
 package com.example.netlib.domain.websocket
 
+import com.example.netlib.domain.model.WebSocketEvent
 import kotlinx.coroutines.flow.Flow
 
 interface WSClient {

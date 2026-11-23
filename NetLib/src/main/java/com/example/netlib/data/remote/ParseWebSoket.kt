@@ -20,7 +20,7 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.jsonPrimitive
 
-fun parge(message: String, json: Json): WebSocketEvent? {
+fun parse(message: String, json: Json): WebSocketEvent? {
 
     return try {
 

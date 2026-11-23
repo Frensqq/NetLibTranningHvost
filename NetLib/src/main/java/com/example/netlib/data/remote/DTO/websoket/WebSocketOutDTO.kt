@@ -25,7 +25,7 @@ data class UnsubscribeEventOut(
 
 
 @Serializable
-data class QueueDomeEventOut(
+data class QueueDemoEventOut(
     val type: String = "queue_demo",
     val appointmentId: String = ""
 )

@@ -20,7 +20,7 @@ data class ErrorEventDTO(
 )
 @Serializable
 data class PongEventDTO (
-    val time: String
+    val time: String = ""
 )
 @Serializable
 data class SubscribeEventDTO(
