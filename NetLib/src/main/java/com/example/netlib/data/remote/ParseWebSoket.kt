@@ -20,7 +20,14 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.jsonPrimitive
 
-fun parse(message: String, json: Json): WebSocketEvent? {
+/**
+ * parse - определяет по type ответа сервера какие модели и DTO использвоать
+ * парсит ответ сервера
+ *
+ * @param message - сообщение сервера в виде строки
+ * @param json - json
+ */
+internal fun parse(message: String, json: Json): WebSocketEvent? {
 
     return try {
 

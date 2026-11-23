@@ -27,7 +27,7 @@ internal class PBApiService(
     private val getToken: () -> String?
 ){
 
-    private val json = Json{
+    val json = Json{
         encodeDefaults = true
         isLenient = true
         ignoreUnknownKeys = true

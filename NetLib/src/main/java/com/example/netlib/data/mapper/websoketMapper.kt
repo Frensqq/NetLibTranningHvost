@@ -26,49 +26,72 @@ import com.example.netlib.domain.model.SubscribeEvent
 import com.example.netlib.domain.model.UnsubscribeEvent
 import com.example.netlib.domain.model.WebSocketUser
 
-
-fun WebSocketUserDTO.toDomain() = WebSocketUser(
+/**
+ * Преобразование WebSocketUserDTO в WebSocketUser
+ */
+internal fun WebSocketUserDTO.toDomain() = WebSocketUser(
      id = id,
      email = email,
      name = name,
 )
 
-fun HelloEventDTO.toDomain() = HelloEvent(
+
+/**
+ * Преобразование HelloEventDTO в HelloEvent
+ */
+internal fun HelloEventDTO.toDomain() = HelloEvent(
      user = user.toDomain(),
      serverTime = serverTime
 )
 
-fun ErrorEventDTO.toDomain() = ErrorEvent(
+/**
+ * Преобразование ErrorEventDTO в ErrorEvent
+ */
+internal fun ErrorEventDTO.toDomain() = ErrorEvent(
     code = code,
     message  = message
 )
 
-fun PongEventDTO.toDomain() = PongEvent(
+/**
+ * Преобразование PongEventDTO в PongEvent
+ */
+internal fun PongEventDTO.toDomain() = PongEvent(
      time = time
 )
 
-fun SubscribeEventDTO.toDomain() = SubscribeEvent(
+/**
+ * Преобразование SubscribeEventDTO в SubscribeEvent
+ */
+internal fun SubscribeEventDTO.toDomain() = SubscribeEvent(
      topic = topic,
      doctor = doctor,
      date = date,
 )
 
-fun SlotTakenEventDTO.toDomain() = SlotTakenEvent(
+/**
+ * Преобразование SlotTakenEventDTO в SlotTakenEvent
+ */
+internal fun SlotTakenEventDTO.toDomain() = SlotTakenEvent(
     doctor = doctor,
     date = date,
     time = time,
     start = start
 )
 
-fun SlotFreesEventDTO.toDomain() = SlotFreesEvent(
+/**
+ * Преобразование SlotFreesEventDTO в SlotFreesEvent
+ */
+internal fun SlotFreesEventDTO.toDomain() = SlotFreesEvent(
      doctor = doctor,
      date = date,
      time =time,
      start = start
 )
 
-
-fun StatusEventDTO.toDomain() = StatusEvent(
+/**
+ * Преобразование StatusEventDTO в StatusEvent
+ */
+internal fun StatusEventDTO.toDomain() = StatusEvent(
      appointmentId = appointmentId,
      number = number,
      status  = status,
@@ -79,8 +102,10 @@ fun StatusEventDTO.toDomain() = StatusEvent(
      changeAt = changeAt
 )
 
-
-fun DelayEventDTO.toDomain() = DelayEvent(
+/**
+ * Преобразование DelayEventDTO в DelayEvent
+ */
+internal fun DelayEventDTO.toDomain() = DelayEvent(
     appointmentId = appointmentId,
     number = number,
     minutes = minutes,
@@ -88,8 +113,10 @@ fun DelayEventDTO.toDomain() = DelayEvent(
     message = message,
 )
 
-
-fun QueueEventDTO.toDomain() = QueueEvent(
+/**
+ * Преобразование QueueEventDTO в QueueEvent
+ */
+internal fun QueueEventDTO.toDomain() = QueueEvent(
     appointmentId = appointmentId,
     number = number,
     state = state,
@@ -100,15 +127,19 @@ fun QueueEventDTO.toDomain() = QueueEvent(
     delayMin = delayMin,
     message = message,
 )
-
-fun UnsubscribeEventDTO.toDomain() = UnsubscribeEvent(
+/**
+ * Преобразование UnsubscribeEventDTO в UnsubscribeEvent
+ */
+internal fun UnsubscribeEventDTO.toDomain() = UnsubscribeEvent(
     topic = topic,
     doctor = doctor,
     date = date
 )
 
-
-fun QueueDemoStartedDTO.toDomain() = QueueDemoStarted(
+/**
+ * Преобразование QueueDemoStartedDTO в QueueDemoStarted
+ */
+internal fun QueueDemoStartedDTO.toDomain() = QueueDemoStarted(
     appointmentId = appointmentId,
     stepSec = stepSec
 )

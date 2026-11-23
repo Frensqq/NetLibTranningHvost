@@ -2,55 +2,85 @@ package com.example.netlib.data.remote.DTO.websoket
 
 import io.ktor.websocket.CloseReason
 import kotlinx.serialization.Serializable
+/**
+ * Модель User дял websocket
+ */
 @Serializable
-data class WebSocketUserDTO(
+internal data class WebSocketUserDTO(
     val id: String,
     val email: String,
     val name: String,
 )
+
+/**
+ * HelloEventDTO - модель запроса на подключение
+ */
 @Serializable
-data class HelloEventDTO(
+internal data class HelloEventDTO(
     val user: WebSocketUserDTO,
     val serverTime: String
 )
+
+/**
+ * HelloEventDTO - Модель ошибки
+ */
 @Serializable
-data class ErrorEventDTO(
+internal data class ErrorEventDTO(
     val code: String,
     val message: String?
 )
+/**
+ * PongEventDTO - Модель ответ сервера на запрос ping
+ */
 @Serializable
-data class PongEventDTO (
+internal data class PongEventDTO (
     val time: String = ""
 )
+/**
+ *  SubscribeEventDTO - Модель для запроса на подписку
+ */
 @Serializable
-data class SubscribeEventDTO(
+internal data class SubscribeEventDTO(
     val topic: String,
     val doctor: String,
     val date: String,
 )
+/**
+ *  SubscribeEventDTO - Модель для запроса на отписку
+ */
 @Serializable
-data class UnsubscribeEventDTO(
+internal data class UnsubscribeEventDTO(
     val topic: String,
     val doctor: String? = null,
     val date: String? = null,
 )
+
+/**
+ * Модель SlotTakenEventDTO - Ответ событие по подписке, кто-то записался на это время
+ */
 @Serializable
-data class SlotTakenEventDTO(
+internal data class SlotTakenEventDTO(
     val doctor: String,
     val date: String,
     val time: String,
     val start: String
 )
+/**
+ * Модель SlotFreesEventDTO - Ответ событие по подписке, запись отменили
+ */
 @Serializable
-data class SlotFreesEventDTO(
+internal data class SlotFreesEventDTO(
     val doctor: String,
     val date: String,
     val time: String,
     val start: String
 )
 
+/**
+ * Модель StatusEventDTO - Ответ на события по записям  Смена статуса (подтверждение, отмена вами или клиникой, завершение)
+ */
 @Serializable
-data class StatusEventDTO(
+internal data class StatusEventDTO(
     val appointmentId: String,
     val number: Int,
     val status: String,
@@ -61,8 +91,11 @@ data class StatusEventDTO(
     val changeAt: String
 )
 
+/**
+ * Модель DelayEventDTO - Ответ на события по записям  Врач задерживается
+ */
 @Serializable
-data class DelayEventDTO(
+internal data class DelayEventDTO(
     val appointmentId: String,
     val number: Int,
     val minutes: Int,
@@ -70,8 +103,11 @@ data class DelayEventDTO(
     val message: String,
 )
 
+/**
+ * QueueEventDTO - Живая очередь
+ */
 @Serializable
-data class QueueEventDTO(
+internal data class QueueEventDTO(
     val appointmentId: String,
     val number: Int,
     val state: String,
@@ -83,8 +119,11 @@ data class QueueEventDTO(
     val message: String,
 )
 
+/**
+ * QueueEventDTO - Модель демонcтрации очереди
+ */
 @Serializable
-data class QueueDemoStartedDTO(
+internal data class QueueDemoStartedDTO(
     val appointmentId: String,
     val stepSec: Int
 )

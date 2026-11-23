@@ -30,7 +30,7 @@ import kotlinx.serialization.json.Json
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.time.Duration.Companion.milliseconds
 
-class KtorRealtimeClient(
+internal class KtorRealtimeClient(
     private val connection: WSConnection,
     private val json: Json,
     private val getToken: () -> String?,

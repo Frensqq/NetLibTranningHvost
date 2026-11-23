@@ -9,7 +9,11 @@ import io.ktor.websocket.Frame
 import io.ktor.websocket.close
 import io.ktor.websocket.readText
 
-class WSConnectionImpl(
+/**
+ *
+ *
+ */
+internal class WSConnectionImpl(
     private val httpClient: HttpClient,
     private val wsUrl: String
 ): WSConnection {

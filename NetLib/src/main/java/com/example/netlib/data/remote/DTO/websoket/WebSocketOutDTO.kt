@@ -3,12 +3,12 @@ package com.example.netlib.data.remote.DTO.websoket
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PingEvent(
+internal data class PingEvent(
     val type: String = "ping"
 )
 
 @Serializable
-data class SubscribeEventOut(
+internal data class SubscribeEventOut(
     val type: String = "subscribe",
     val topic: String = "slots",
     val doctor: String ,
@@ -16,7 +16,7 @@ data class SubscribeEventOut(
 )
 
 @Serializable
-data class UnsubscribeEventOut(
+internal data class UnsubscribeEventOut(
     val type: String = "unsubscribe",
     val topic: String = "slots",
     val doctor: String? ,
@@ -25,7 +25,7 @@ data class UnsubscribeEventOut(
 
 
 @Serializable
-data class QueueDemoEventOut(
+internal data class QueueDemoEventOut(
     val type: String = "queue_demo",
     val appointmentId: String = ""
 )
