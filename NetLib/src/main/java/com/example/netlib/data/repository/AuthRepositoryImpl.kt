@@ -27,7 +27,8 @@ internal class AuthRepositoryImpl(
 ): PBRepositoryBase(network), AuthRepository {
     override suspend fun register(data: Registration): NetworkResult<User> {
         return safeApiCall {
-            api.register(data.toRequest()).toDomain()
+            val user = api.register(data.toRequest()).toDomain()
+            user.copy(email = user.email.ifEmpty { data.email })
         }
     }
 

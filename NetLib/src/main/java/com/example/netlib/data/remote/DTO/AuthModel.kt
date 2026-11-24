@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @kotlinx.serialization.Serializable
 internal data class UserDTO(
     val id: String,
-val email: String,
+val email: String = "",
 val name: String,
 val phone: String,
 val avatar: String,
