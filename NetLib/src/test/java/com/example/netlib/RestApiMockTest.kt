@@ -1,6 +1,7 @@
 package com.example.netlib
 
 import com.example.netlib.data.remote.PBApi
+import com.example.netlib.data.remote.PBApiService
 import com.example.netlib.data.repository.AppointmentsRepositoryImpl
 import com.example.netlib.data.repository.AuthRepositoryImpl
 import com.example.netlib.domain.model.AppointmentUpdate
@@ -35,26 +36,9 @@ class RestApiMockTest {
     private fun createClient(
         response: String,
         status: HttpStatusCode = HttpStatusCode.OK
-    ) = HttpClient(MockEngine {
-        respond(
-            content = response,
-            status = status,
-            headers = headersOf(
-                HttpHeaders.ContentType,
-                "application/json"
-            )
-        )
-    }) {
-        expectSuccess = true
-
-        install(ContentNegotiation) {
-            json(json)
-        }
-
-        defaultRequest {
-            url("http://10.0.2.2:8090/api/")
-        }
-    }
+    ) = PBApiService("http://10.0.2.2:8090/api/", { null }).create(MockEngine {
+        respond(response, status, headersOf(HttpHeaders.ContentType, "application/json"))
+    })
 
     private val onlineNetwork = object : Network {
         override fun isConnected(): Boolean = true
