@@ -3,6 +3,8 @@ package com.example.netlib.data.remote
 import com.example.netlib.domain.websocket.WSConnection
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.websocket.webSocketSession
+import io.ktor.client.request.header
+import io.ktor.http.HttpHeaders
 import io.ktor.client.request.url
 import io.ktor.websocket.DefaultWebSocketSession
 import io.ktor.websocket.Frame
@@ -25,7 +27,7 @@ internal class WSConnectionImpl(
 
         session = httpClient.webSocketSession {
             url(wsUrl)
-            url.parameters.append("token", token)
+            header(HttpHeaders.Authorization, token)
         }
 
     }
