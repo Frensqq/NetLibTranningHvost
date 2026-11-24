@@ -76,7 +76,6 @@ internal class KtorRealtimeClient(
                             if (currentToken.isNullOrBlank()) break
 
                             connection.connection(currentToken)
-                            connected = true
 
                             val closeCode = connection.listen { message ->
                                 val event = parse(message, json)
@@ -91,6 +90,7 @@ internal class KtorRealtimeClient(
                                     retryDelay = 1000L
 
                                     subscriptionMutex.withLock {
+                                        connected = true
                                         val doctor = activeDoctor
                                         val date = activeDate
 
@@ -112,7 +112,10 @@ internal class KtorRealtimeClient(
                                 }
                             }
 
-                            if (closeCode != null) {
+                            if (closeCode == 4001 && lastCloseCode != 4001) {
+                                _events.emit(ErrorEvent("unauthorized", "Требуется повторный вход"))
+                            }
+                            if (closeCode != null && lastCloseCode != 4001) {
                                 lastCloseCode = closeCode
                             }
 
@@ -146,6 +149,10 @@ internal class KtorRealtimeClient(
             listenerJob = null
 
             job?.cancelAndJoin()
+            subscriptionMutex.withLock {
+                activeDoctor = null
+                activeDate = null
+            }
 
             connection.disconnected()
         }
@@ -157,6 +164,10 @@ internal class KtorRealtimeClient(
 
     override suspend fun subscribeSlots(doctor: String, date: String) {
         subscriptionMutex.withLock {
+            if (activeDoctor == doctor && activeDate == date) return
+            if (connected && activeDoctor != null) {
+                connection.send(json.encodeToString(UnsubscribeEventOut(doctor = activeDoctor, date = activeDate)))
+            }
             activeDoctor = doctor
             activeDate = date
 
@@ -178,8 +189,10 @@ internal class KtorRealtimeClient(
         date: String?
     ) {
         subscriptionMutex.withLock {
-            activeDoctor = null
-            activeDate = null
+            if ((doctor == null || doctor == activeDoctor) && (date == null || date == activeDate)) {
+                activeDoctor = null
+                activeDate = null
+            }
 
             if (connected) {
                 connection.send(
