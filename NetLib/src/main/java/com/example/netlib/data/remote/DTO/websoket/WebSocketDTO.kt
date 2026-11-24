@@ -86,9 +86,9 @@ internal data class StatusEventDTO(
     val status: String,
     val statusLabel: String,
     val previous: String,
-    val cancerReason: String,
+    val cancelReason: String,
     val start: String,
-    val changeAt: String
+    val changedAt: String
 )
 
 /**
@@ -111,7 +111,6 @@ internal data class QueueEventDTO(
     val appointmentId: String,
     val number: Int,
     val state: String,
-    val waiting: String,
     val ahead: Int,
     val etaMin: Int,
     val room: String,

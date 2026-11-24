@@ -1,6 +1,5 @@
 package com.example.netlib.domain.model
 
-import kotlinx.serialization.Serializable
 
 sealed interface WebSocketEvent
 
@@ -56,9 +55,9 @@ data class StatusEvent(
     val status: String,
     val statusLabel: String,
     val previous: String,
-    val cancerReason: String,
+    val cancelReason: String,
     val start: String,
-    val changeAt: String
+    val changedAt: String
 ): WebSocketEvent
 
 
@@ -75,7 +74,6 @@ data class QueueEvent(
     val appointmentId: String,
     val number: Int,
     val state: String,
-    val waiting: String,
     val ahead: Int,
     val etaMin: Int,
     val room: String,

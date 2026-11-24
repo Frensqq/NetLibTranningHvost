@@ -97,9 +97,9 @@ internal fun StatusEventDTO.toDomain() = StatusEvent(
      status  = status,
      statusLabel = statusLabel,
      previous = previous,
-     cancerReason = cancerReason,
+     cancelReason = cancelReason,
      start = start,
-     changeAt = changeAt
+     changedAt = changedAt
 )
 
 /**
@@ -120,7 +120,6 @@ internal fun QueueEventDTO.toDomain() = QueueEvent(
     appointmentId = appointmentId,
     number = number,
     state = state,
-    waiting = waiting,
     ahead = ahead,
     etaMin = etaMin,
     room = room,
