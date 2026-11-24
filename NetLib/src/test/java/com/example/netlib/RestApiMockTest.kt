@@ -220,4 +220,34 @@ class RestApiMockTest {
 
         client.close()
     }
+    @Test
+    fun socketTimeoutHasItsOwnResult() = runTest {
+        PBApiService("http://localhost/api/", { null }).create(MockEngine {
+            throw java.net.SocketTimeoutException("read timed out")
+        }).use {
+            val repository = AppointmentsRepositoryImpl(PBApi(it), onlineNetwork)
+            assertIs<NetworkResult.Timeout>(repository.getSlots("doctor", "2026-11-11"))
+        }
+    }
+
+    @Test
+    fun malformedServerErrorRetainsHttpStatus() = runTest {
+        createClient("<html>unavailable</html>", HttpStatusCode.BadGateway).use {
+            val repository = AppointmentsRepositoryImpl(PBApi(it), onlineNetwork)
+            val result = repository.getSlots("doctor", "2026-11-11")
+            assertEquals(502, assertIs<NetworkResult.ErrorSerialization>(result).status)
+        }
+    }
+
+    @Test
+    fun cancelledRequestPropagatesCancellation() = runTest {
+        PBApiService("http://localhost/api/", { null }).create(MockEngine {
+            throw kotlinx.coroutines.CancellationException("cancelled")
+        }).use {
+            val repository = AppointmentsRepositoryImpl(PBApi(it), onlineNetwork)
+            kotlin.test.assertFailsWith<kotlinx.coroutines.CancellationException> {
+                repository.getSlots("doctor", "2026-11-11")
+            }
+        }
+    }
 }
