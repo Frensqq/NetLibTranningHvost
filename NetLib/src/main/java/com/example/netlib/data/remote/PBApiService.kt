@@ -36,7 +36,9 @@ internal class PBApiService(
         install(HttpTimeout) { requestTimeoutMillis = 30_000 }
         defaultRequest {
             url(defaultUrl.trimEnd('/') + "/")
-            getToken()?.let { header(HttpHeaders.Authorization, it) }
+            if (!headers.contains(HttpHeaders.Authorization)) {
+                getToken()?.let { header(HttpHeaders.Authorization, it) }
+            }
         }
     }
 }
