@@ -1,71 +1,42 @@
 package com.example.netlib.data.remote
 
 import io.ktor.client.HttpClient
+import io.ktor.client.HttpClientConfig
+import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
-import io.ktor.client.plugins.logging.LogLevel
-import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.plugins.websocket.WebSockets
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.request.header
 import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import okhttp3.WebSocket
 
-
-/**
- * PBApiService - настройка Http клиента для библиотеки
- *
- * @param defaultUrl - путь к серверу
- * @param getToken - токен авторизации
- *
- */
 internal class PBApiService(
     private val defaultUrl: String,
     private val getToken: () -> String?
-){
+) {
+    val json = Json { ignoreUnknownKeys = true; encodeDefaults = true }
 
-    val json = Json{
-        encodeDefaults = true
-        isLenient = true
-        ignoreUnknownKeys = true
-    }
+    fun create(): HttpClient = HttpClient(OkHttp) { configureClient() }
 
-    fun create(): HttpClient{
-        return HttpClient(OkHttp){
-            expectSuccess = true
+    fun create(engine: HttpClientEngine): HttpClient = HttpClient(engine) { configureClient() }
 
-
-            install(ContentNegotiation){
-             json(json)
-            }
-
-            install(Logging){
-                level = LogLevel.HEADERS
-
-
-                    sanitizeHeader { header ->
-                        header == HttpHeaders.Authorization
-                    }
-
-            }
-
-            install(HttpTimeout){
-                connectTimeoutMillis = 30000
-            }
-
-            install(WebSockets) {
-                pingInterval = 0
-            }
-
-            defaultRequest {
-                defaultUrl
-                getToken()?.let {
-                    header(HttpHeaders.Authorization, it)
-                }
-            }
+    private fun HttpClientConfig<*>.configureClient() {
+        expectSuccess = true
+        install(Logging) {
+            level = LogLevel.HEADERS
+            sanitizeHeader { it.equals(HttpHeaders.Authorization, ignoreCase = true) }
+        }
+        install(ContentNegotiation) { json(json) }
+        install(WebSockets)
+        install(HttpTimeout) { requestTimeoutMillis = 30_000 }
+        defaultRequest {
+            url(defaultUrl.trimEnd('/') + "/")
+            getToken()?.let { header(HttpHeaders.Authorization, it) }
         }
     }
 }
