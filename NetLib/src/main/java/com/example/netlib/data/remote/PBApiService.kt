@@ -33,7 +33,10 @@ internal class PBApiService(
         }
         install(ContentNegotiation) { json(json) }
         install(WebSockets)
-        install(HttpTimeout) { requestTimeoutMillis = 30_000 }
+        install(HttpTimeout) {
+            requestTimeoutMillis = 30_000
+            connectTimeoutMillis = 30_000
+        }
         defaultRequest {
             url(defaultUrl.trimEnd('/') + "/")
             if (!headers.contains(HttpHeaders.Authorization)) {

@@ -4,6 +4,7 @@ import com.example.netlib.data.remote.ServerErrorParser
 import com.example.netlib.domain.model.ApiError
 import com.example.netlib.domain.model.NetworkResult
 import com.example.netlib.domain.network.Network
+import io.ktor.client.network.sockets.ConnectTimeoutException
 import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.client.plugins.ResponseException
 import io.ktor.serialization.ContentConvertException
@@ -20,6 +21,8 @@ internal abstract class PBRepositoryBase(private val network: Network) {
         } catch (e: CancellationException) {
             throw e
         } catch (e: HttpRequestTimeoutException) {
+            NetworkResult.Timeout
+        } catch (e: ConnectTimeoutException) {
             NetworkResult.Timeout
         } catch (e: SocketTimeoutException) {
             NetworkResult.Timeout
