@@ -10,21 +10,23 @@ import com.example.netlib.domain.storage.TokenStorage
  *  @param context - контекст android
  */
 internal class TokenStorageImpl(
-    private val context: Context
+    context: Context
 ): TokenStorage {
 
-    val preferences = context.getSharedPreferences("net_lib_hvost", Context.MODE_PRIVATE)
+    private val preferences = context.applicationContext.getSharedPreferences("net_lib_hvost", Context.MODE_PRIVATE)
+
+    private companion object { const val TOKEN_KEY = "auth_token" }
 
     override fun getToken(): String? {
-        return preferences.getString("token_auth", null)
+        return preferences.getString(TOKEN_KEY, null)
     }
 
     override fun saveToken(token: String?) {
         preferences.edit().apply {
             if (token == null) {
-                remove("auth_token")
+                remove(TOKEN_KEY)
             } else {
-                putString("auth_token", token)
+                putString(TOKEN_KEY, token)
             }
             apply()
         }
